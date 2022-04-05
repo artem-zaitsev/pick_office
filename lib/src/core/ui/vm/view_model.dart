@@ -8,6 +8,16 @@ abstract class ViewModel extends ChangeNotifier {
     required ErrorHandler errorHandler,
   }) : _errorHandler = errorHandler;
 
+  /// Колбек на initState
+  void onInit() {
+    debugPrint('init $this');
+  }
+
+  /// Колбек на dispose
+  void onDispose() {
+    debugPrint('dispose $this');
+  }
+
   /// Безопасный вызов кода
   void safe(void Function() call) {
     try {

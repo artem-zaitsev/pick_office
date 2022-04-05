@@ -8,7 +8,7 @@ import 'package:pick_office/src/features/booking/services/repository/data/respon
 class OfficeApi {
   /// Список офисов
   Future<List<OfficeResponse>> getOffices() async {
-    final data = await rootBundle.loadString('office.json');
+    final data = await rootBundle.loadString('data/office.json');
     final office =
         OfficeResponse.fromJson(json.jsonDecode(data) as Map<String, dynamic>);
 

@@ -27,6 +27,9 @@ abstract class AppTextStyles {
   static final text700size18 = text700.copyWith(
     fontSize: 18,
   );
+  static final text700size18Dark = text700.copyWith(
+    color: AppColors.dark,
+  );
   static final text700size18White = text700size18.copyWith(
     color: AppColors.white,
   );

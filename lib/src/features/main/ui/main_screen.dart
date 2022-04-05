@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
 import 'package:pick_office/src/core/ui/res/app_assets.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
+import 'package:pick_office/src/features/booking/services/office_service.dart';
+import 'package:pick_office/src/features/booking/services/repository/api/office_api.dart';
+import 'package:pick_office/src/features/booking/services/repository/office_repository.dart';
+import 'package:pick_office/src/features/booking/ui/screens/offices/offices_screen.dart';
+import 'package:pick_office/src/features/booking/ui/screens/offices/offices_vm.dart';
 import 'package:pick_office/src/features/main/ui/main_vm.dart';
 import 'package:pick_office/src/features/main/ui/models/tab_type.dart';
 
@@ -24,7 +30,21 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      body: Stack(
+        children: [
+          if (vm.activeTab == TabType.home)
+            OfficesScreen(
+              vm: OfficesVm(
+                OfficeService(
+                  OfficeRepository(
+                    OfficeApi(),
+                  ),
+                ),
+                errorHandler: ErrorHandler(context),
+              ),
+            )
+        ],
+      ),
       bottomNavigationBar: SizedBox(
         height: 82,
         child: Row(

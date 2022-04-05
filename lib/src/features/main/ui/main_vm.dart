@@ -2,14 +2,15 @@ import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
 import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/main/ui/models/tab_type.dart';
 
-
 /// ВьюМодель главного экрана
 class MainVm extends ViewModel {
-  TabType activeTab = TabType.home;
+  TabType activeTab;
 
   MainVm({
     required ErrorHandler errorHandler,
-  }) : super(
+    TabType selectedTab = TabType.home,
+  })  : activeTab = selectedTab,
+        super(
           errorHandler: errorHandler,
         );
 
