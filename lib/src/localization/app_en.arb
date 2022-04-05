@@ -1,0 +1,6 @@
+{
+  "appTitle": "pick_office",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
