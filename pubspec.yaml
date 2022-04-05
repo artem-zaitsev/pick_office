@@ -2,7 +2,7 @@ name: pick_office
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -16,6 +16,9 @@ dependencies:
     sdk: flutter
 
   flutter_svg: ^1.0.3
+  freezed_annotation: ^1.1.0
+
+  json_annotation: ^4.4.0
 
 dev_dependencies:
   build_runner: ^2.1.2
@@ -24,6 +27,9 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+
+  freezed: ^1.1.1
+  json_serializable: ^6.0.0
 
 flutter:
   uses-material-design: true
@@ -34,6 +40,8 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/data/
+    - assets/svg/
 
   fonts:
     - family: GT Walsheim Pro
