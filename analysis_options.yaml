@@ -102,7 +102,6 @@ dart_code_metrics:
         exclude:
           - lib/src/core/services/network/firebase_options.dart
           - test/**
-    - prefer-single-widget-per-file
     - provide-correct-intl-args
     - member-ordering-extended:
         exclude:
