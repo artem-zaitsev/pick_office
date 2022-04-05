@@ -1,0 +1,26 @@
+{
+    "id": 1,
+    "name": "#303 Кузнецкий Мост",
+    "places": [
+        {
+            "id": 1,
+            "available": true
+        },
+        {
+            "id": 2,
+            "available": true
+        },
+        {
+            "id": 3,
+            "available": true
+        },
+        {
+            "id": 4,
+            "available": false
+        },
+        {
+            "id": 5,
+            "available": true
+        }
+    ]
+}
