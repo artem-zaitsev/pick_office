@@ -7,6 +7,6 @@ abstract class AppAssets {
   static const icHome = '$_baseSvgPath/ic_home.svg';
   static const icRepeat = '$_baseSvgPath/ic_repeat.svg';
 
-  static const _baseAssetsPath = '/assets';
+  static const _baseAssetsPath = 'assets';
   static const _baseSvgPath = '$_baseAssetsPath/svg';
 }

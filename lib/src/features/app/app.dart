@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pick_office/src/core/ui/res/app_theme.dart';
+import 'package:pick_office/src/navigation/app_navigation.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -10,7 +11,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerDelegate: AppNavigation.router.routerDelegate,
+      routeInformationParser: AppNavigation.router.routeInformationParser,
       // Providing a restorationScopeId allows the Navigator built by the
       // MaterialApp to restore the navigation stack when a user leaves and
       // returns to the app after it has been killed while running in the
@@ -29,6 +32,7 @@ class App extends StatelessWidget {
       supportedLocales: const [
         Locale('en', ''),
         Locale('ru', ''),
+        Locale('RU', ''),
       ],
 
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,

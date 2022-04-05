@@ -24,6 +24,7 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       bottomNavigationBar: SizedBox(
         height: 82,
         child: Row(
@@ -48,6 +49,7 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
                           child: Center(
                             child: _Icon(
                               tab: tab,
+                              isActive: tab == vm.activeTab,
                             ),
                           ),
                         ),
@@ -65,10 +67,12 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
 
 class _Icon extends StatelessWidget {
   final TabType tab;
+  final bool isActive;
 
   const _Icon({
     Key? key,
     required this.tab,
+    required this.isActive,
   }) : super(key: key);
 
   @override
@@ -79,6 +83,7 @@ class _Icon extends StatelessWidget {
           AppAssets.icHome,
           width: 20,
           height: 15,
+          color: _getColor(),
         );
 
       case TabType.history:
@@ -86,7 +91,11 @@ class _Icon extends StatelessWidget {
           AppAssets.icHistory,
           width: 15,
           height: 15,
+          color: _getColor(),
         );
     }
   }
+
+  Color _getColor() =>
+      isActive ? AppColors.dark : AppColors.dark.withOpacity(0.4);
 }
