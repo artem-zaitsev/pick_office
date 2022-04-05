@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pick_office/src/core/%20ui/res/app_colors.dart';
+import 'package:pick_office/src/core/ui/res/app_colors.dart';
 
 /// Описание текстовых стилей приложения
 /// Реализовано наследование стилей, все базируется на базовом _text

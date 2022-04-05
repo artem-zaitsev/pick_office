@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pick_office/src/core/%20ui/res/app_colors.dart';
-import 'package:pick_office/src/core/%20ui/res/app_text_styles.dart';
+import 'package:pick_office/src/core/ui/res/app_colors.dart';
+import 'package:pick_office/src/core/ui/res/app_text_styles.dart';
 
 /// Описание темы приложения(или ее части)
 /// 
