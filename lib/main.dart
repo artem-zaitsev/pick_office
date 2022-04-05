@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'src/ features/app/app.dart';
+import 'src/features/app/app.dart';
 
-
-void main() async {
-  runApp(const PickOfficeApp());
+void main() {
+  runApp(const App());
 }

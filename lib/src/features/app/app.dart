@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:pick_office/src/core/%20ui/res/app_theme.dart';
 
-class PickOfficeApp extends StatelessWidget {
-  const PickOfficeApp({
+class App extends StatelessWidget {
+  const App({
     Key? key,
   }) : super(key: key);
 
@@ -26,18 +27,16 @@ class PickOfficeApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
-        Locale('en', ''), 
-        Locale('ru', ''), 
+        Locale('en', ''),
+        Locale('ru', ''),
       ],
 
-      onGenerateTitle: (BuildContext context) =>
-          AppLocalizations.of(context)!.appTitle,
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
 
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
       // SettingsController to display the correct theme.
-      theme: ThemeData(),
-      darkTheme: ThemeData.dark(),
+      theme: AppTheme.theme,
     );
   }
 }
