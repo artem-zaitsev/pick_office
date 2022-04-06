@@ -27,4 +27,8 @@ class OfficesVm extends ViewModel {
       },
     );
   }
+
+  void selectOffice(Office office) {
+    //TODO: открыть экран конкретного офиса
+  }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/res/app_text_styles.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
+import 'package:pick_office/src/features/booking/domain/office.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_vm.dart';
 
 class OfficesScreen extends StatefulWidget {
@@ -52,24 +53,59 @@ class _OfficesScreenState extends VmState<OfficesScreen, OfficesVm> {
 
         return ListView.builder(
           itemCount: vm.office.data?.length,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 30,
+          ),
           itemBuilder: (ctx, i) {
-            return Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.shadowColor,
-                    blurRadius: 10,
-                  )
-                ],
-              ),
-              child: Text(
-                offices[i].name,
-                style: AppTextStyles.text700size18Dark,
-              ),
+            return _Office(
+              office: offices[i],
+              onTap: vm.selectOffice,
             );
           },
         );
       }),
+    );
+  }
+}
+
+class _Office extends StatelessWidget {
+  final Office office;
+  final void Function(Office) onTap;
+
+  const _Office({
+    Key? key,
+    required this.office,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.shadowColor,
+            blurRadius: 10,
+          )
+        ],
+        color: AppColors.white,
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
+      ),
+      clipBehavior: Clip.hardEdge,
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: () => onTap(office),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              office.name,
+              style: AppTextStyles.text700size18Dark,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
