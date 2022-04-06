@@ -1,6 +1,8 @@
 class OfficePlace {
   final int id;
   final bool available;
+  
+  bool chosen = false;
 
   String get name => '#$id';
   

@@ -61,7 +61,20 @@ class _SelectPlaceScreenState
 
           return Stack(
             children: [
-              Placeholder(),
+              Align(
+                child: GestureDetector(
+                  onTapDown: vm.tapOnPlace,
+                  child: CustomPaint(
+                    painter: _PlacesPainter(
+                      vm.drawable,
+                    ),
+                    child: const SizedBox(
+                      width: 170,
+                      height: 230,
+                    ),
+                  ),
+                ),
+              ),
               Positioned(
                 bottom: 20,
                 left: 15,
@@ -93,7 +106,7 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: enabled ? null : onTap,
+      onPressed: enabled ? onTap : null,
       style: ButtonStyle(
         shape: MaterialStateProperty.all(
           const RoundedRectangleBorder(
@@ -115,13 +128,33 @@ class _Button extends StatelessWidget {
         ),
       ),
       child: Text(
-        enabled
+        !enabled
             ? AppLocalizations.of(context)!.choosePlaceText
             : AppLocalizations.of(context)!.continueText,
-        style: enabled
+        style: !enabled
             ? AppTextStyles.text700size18White60
             : AppTextStyles.text700size18White,
       ),
     );
+  }
+}
+
+class _PlacesPainter extends CustomPainter {
+  final DrawableRoot drawable;
+
+  _PlacesPainter(this.drawable);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    drawable.draw(
+      canvas,
+      Rect.fromLTWH(0, 0, size.width, size.height),
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+    return true;
   }
 }
