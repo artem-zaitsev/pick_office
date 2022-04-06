@@ -81,6 +81,10 @@ class SelectPlaceVm extends ViewModel {
       }
     }
 
+    if (foundId == -1) {
+      chosenPlace = null;
+    }
+
     for (final place in office.data!.places) {
       if (place.id == foundId) {
         place.chosen = true;
