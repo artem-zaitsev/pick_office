@@ -5,11 +5,14 @@ import 'package:pick_office/src/features/booking/domain/office_place.dart';
 import 'package:pick_office/src/features/booking/services/storage/booking_storage.dart';
 
 /// Сервис для работы с бронированиями
+/// 
+/// Дает вохможност получить список как реактивно, так и императивно
 class BookingService {
   final BookingStorage _bookingStorage;
 
   final _controller = StreamController<List<Booking>>.broadcast();
 
+  /// Возможность подписать на изменения списка
   Stream<List<Booking>> get bookingsStream => _controller.stream;
 
   BookingService(this._bookingStorage);

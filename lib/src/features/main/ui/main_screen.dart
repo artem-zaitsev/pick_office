@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pick_office/src/core/domain/tab_type.dart';
 import 'package:pick_office/src/core/ui/res/app_assets.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
-import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
-import 'package:pick_office/src/features/booking/ui/screens/offices/offices_route.dart';
 import 'package:pick_office/src/features/main/ui/main_vm.dart';
-import 'package:pick_office/src/core/domain/tab_type.dart';
 import 'package:pick_office/src/navigation/app_navigation.dart';
 
 class MainScreen extends StatefulWidget {
@@ -36,14 +34,7 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
               child: Navigator(
                 key: Key(tab.name),
                 initialRoute: tab.name,
-                onGenerateRoute: (rs) {
-                  if ([TabType.history.name, TabType.home.name]
-                      .contains(rs.name)) {
-                    return vm.tabsRoutes[rs.name];
-                  }
-
-                  return AppNavigation.nestedRoutes[rs.name!]!(rs);
-                },
+                onGenerateRoute: _getRoute,
               ),
             ),
         ],
@@ -85,6 +76,14 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
         ),
       ),
     );
+  }
+
+  Route<dynamic>? _getRoute(RouteSettings rs) {
+    if ([TabType.history.name, TabType.home.name].contains(rs.name)) {
+      return vm.tabsRoutes[rs.name];
+    }
+
+    return AppNavigation.nestedRoutes[rs.name!]!(rs);
   }
 }
 

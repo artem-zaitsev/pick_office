@@ -5,10 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/features/booking/domain/office_place.dart';
 
+/// Менеджер для обрбаботки свг файла и его раскраски на основе данных с сервера
 class StructureManager {
   late DrawableRoot drawable;
-  late List<OfficePlace> _places;
 
+  /// Инициализация
   Future<void> init(Uint8List rawData) async {
     drawable = await svg.fromSvgBytes(
       rawData,
@@ -18,9 +19,8 @@ class StructureManager {
     return;
   }
 
+  /// Обновление drawable на основе списка
   void update(List<OfficePlace> places) {
-    _places = places.toList();
-
     for (final d in drawable.children.toList()) {
       if (d.id != null && d.id!.isNotEmpty) {
         final place = places.firstWhere(

@@ -48,14 +48,14 @@ class _SelectPlaceScreenState
           }
 
           if (vm.office.hasError) {
-            return const Center(
-              child: Text('SomeError'),
+            return  Center(
+              child: Text(AppLocalizations.of(context)!.errorText),
             );
           }
 
           if (vm.office.data == null) {
-            return const Center(
-              child: Text('Empty'),
+            return  Center(
+              child: Text(AppLocalizations.of(context)!.empty),
             );
           }
 
@@ -80,7 +80,7 @@ class _SelectPlaceScreenState
                 left: 15,
                 right: 15,
                 height: 50,
-                child: _Button(
+                child: SelectPlaceButton(
                   enabled: vm.chosenPlace != null,
                   onTap: vm.accept,
                 ),
@@ -93,11 +93,11 @@ class _SelectPlaceScreenState
   }
 }
 
-class _Button extends StatelessWidget {
+class SelectPlaceButton extends StatelessWidget {
   final bool enabled;
   final void Function() onTap;
 
-  const _Button({
+  const SelectPlaceButton({
     Key? key,
     required this.enabled,
     required this.onTap,
@@ -154,7 +154,6 @@ class _PlacesPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
     return true;
   }
 }

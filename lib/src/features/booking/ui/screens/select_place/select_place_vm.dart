@@ -8,11 +8,11 @@ import 'package:pick_office/src/features/booking/domain/office_place.dart';
 import 'package:pick_office/src/features/booking/services/booking_service.dart';
 import 'package:pick_office/src/features/booking/services/office_service.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
-import 'package:pick_office/src/features/booking/ui/screens/history/history_screen.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/dialogs/accept_booking_dialog.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/structure_manager/structure_manager.dart';
 import 'package:pick_office/src/navigation/app_navigation.dart';
 
+///  Вью-модель для экрана выбора места
 class SelectPlaceVm extends ViewModel {
   final structureManager = StructureManager();
 

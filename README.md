@@ -1,30 +1,24 @@
 # pick_office
 
-A new Flutter project.
+Проект мини приложения, в котором можно выбрать место на свг карте и забронировать его.
+Все действия происходят логкально, сохранение идет в hive. 
 
-## Getting Started
+## Структура svg
+Данные берутся из локально расположенного svg(/assets/data/structure.svg) в демонстрационных целях.
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+В самой структуре кроме графики есть одно важное изменение - добавлен атрибут id. 
+Он необходим, чтобы сопоставить элементы свг с данными из сервера(в данном случае локального json) и верно проставить статусы.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Архитектура
 
-## Assets
+Построена на основе разбиения на фичи, которые бразбьиваются по слоям на мотив CleanArchitecture
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
+- domain - модели предметной области данных
+- service - сервисный слой:
+  - _service - сущности наиболее близкие к Interactor
+  - repository - обертки над источниками данных
+  - api | storage - источники данных
+  - data - модели сервисного слоя
+- ui - презентационный слой. Построен на основе MVVM с помощь ChangeNotifier
 
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
-
-## Localization
-
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+Для навигации использован go_router(верхнеуровневая) и обычный навигатор для навигации внутри табов.

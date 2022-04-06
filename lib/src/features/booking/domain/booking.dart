@@ -3,6 +3,7 @@ import 'package:pick_office/src/features/booking/domain/office_place.dart';
 
 final _dateFormat = DateFormat(DateFormat.HOUR24_MINUTE);
 
+/// Модель бронировани
 class Booking {
   final int id;
   final DateTime createdAt;

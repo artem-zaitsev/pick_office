@@ -40,14 +40,14 @@ class _HistoryScreenState extends VmState<HistoryScreen, HistoryVm> {
           }
 
           if (vm.bookings.hasError) {
-            return const Center(
-              child: Text('SomeError'),
+            return Center(
+              child: Text(AppLocalizations.of(context)!.errorText),
             );
           }
 
           if (vm.bookings.data!.isEmpty) {
-            return const Center(
-              child: Text('Empty'),
+            return Center(
+              child: Text(AppLocalizations.of(context)!.empty),
             );
           }
 
@@ -105,9 +105,7 @@ class _HistoryScreenState extends VmState<HistoryScreen, HistoryVm> {
                     ),
                     const SizedBox(height: 15),
                     Text(
-                      AppLocalizations.of(context)!.placePointText +
-                          ' ' +
-                          booking.place.name,
+                      '${AppLocalizations.of(context)!.placePointText} ${booking.place.name}',
                       style: AppTextStyles.text400size18Dark,
                     ),
                   ],

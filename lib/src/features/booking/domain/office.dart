@@ -1,5 +1,7 @@
 import 'package:pick_office/src/features/booking/domain/office_place.dart';
 
+
+/// Модель офиса
 class Office {
   final int id;
   final String name;

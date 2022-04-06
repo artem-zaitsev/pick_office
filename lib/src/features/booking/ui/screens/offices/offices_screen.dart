@@ -20,7 +20,6 @@ class OfficesScreen extends StatefulWidget {
 
 class _OfficesScreenState extends VmState<OfficesScreen, OfficesVm>
     with AutomaticKeepAliveClientMixin<OfficesScreen> {
-      
   @override
   bool get wantKeepAlive => true;
 
@@ -46,14 +45,14 @@ class _OfficesScreenState extends VmState<OfficesScreen, OfficesVm>
           }
 
           if (vm.office.hasError) {
-            return const Center(
-              child: Text('SomeError'),
+            return Center(
+              child: Text(AppLocalizations.of(context)!.errorText),
             );
           }
 
           if (vm.office.data!.isEmpty) {
-            return const Center(
-              child: Text('Empty'),
+            return Center(
+              child: Text(AppLocalizations.of(context)!.empty),
             );
           }
 

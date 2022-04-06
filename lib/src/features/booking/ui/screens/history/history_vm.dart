@@ -6,6 +6,9 @@ import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/booking/domain/booking.dart';
 import 'package:pick_office/src/features/booking/services/booking_service.dart';
 
+/// Вьюмодель истории
+/// 
+/// Подписана на изменения в сервисе боронирования
 class HistoryVm extends ViewModel {
   final BookingService _bookingService;
 

@@ -11,5 +11,6 @@
   "oneMoreText": "Забронировать ещё",
   "finishText": "Завершить",
   "bookingHistoryTitle": "История бронирований",
-  "placePointText": "Место:"
+  "placePointText": "Место:",
+  "empty": "Пусто"
 }

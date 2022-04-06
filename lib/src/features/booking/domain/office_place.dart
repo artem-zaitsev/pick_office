@@ -1,3 +1,4 @@
+/// Модель конкретного места
 class OfficePlace {
   final int id;
   final bool available;
