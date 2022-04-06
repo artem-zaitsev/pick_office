@@ -3,5 +3,12 @@
   "@appTitle": {
     "description": "The title of the application"
   },
-  "officeTitle": "Бронирование места в офисе"
+  "officeTitle": "Бронирование места в офисе",
+  "choosePlaceText": "Укажите мест на карте...",
+  "continueText": "Подтвердить",
+  "successfulBooking": "Бронирование успешно!",
+  "errorText": "Произошла ошибка",
+  "oneMoreText": "Забронировать ещё",
+  "finishText": "Завершить",
+  "bookingHistoryTitle": "История бронирований"
 }

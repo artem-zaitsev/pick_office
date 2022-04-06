@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
+import 'package:pick_office/src/di/di.dart';
 import 'package:pick_office/src/features/booking/services/office_service.dart';
 import 'package:pick_office/src/features/booking/services/repository/api/office_api.dart';
 import 'package:pick_office/src/features/booking/services/repository/office_repository.dart';
@@ -18,11 +19,7 @@ class OfficesRoute extends MaterialPageRoute<void> {
 
 OfficesVm createVm(BuildContext context) {
   return OfficesVm(
-    OfficeService(
-      OfficeRepository(
-        OfficeApi(),
-      ),
-    ),
+    Di.i.officeService,
     context,
     errorHandler: ErrorHandler(context),
   );

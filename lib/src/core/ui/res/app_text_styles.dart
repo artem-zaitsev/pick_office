@@ -33,4 +33,7 @@ abstract class AppTextStyles {
   static final text700size18White = text700size18.copyWith(
     color: AppColors.white,
   );
+  static final text700size18White60 = text700size18White.copyWith(
+    color: AppColors.white.withOpacity(0.6),
+  );
 }
