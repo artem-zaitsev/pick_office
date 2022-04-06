@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
+import 'package:pick_office/src/di/di.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_screen.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_vm.dart';
 
@@ -19,6 +20,7 @@ class HistoryRoute extends MaterialPageRoute<void> {
 
 HistoryVm createVm(BuildContext context) {
   return HistoryVm(
+    Di.i.bookingService,
     errorHandler: ErrorHandler(context),
   );
 }

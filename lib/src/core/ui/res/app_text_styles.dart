@@ -17,8 +17,14 @@ abstract class AppTextStyles {
   static final text400size15 = text400.copyWith(
     fontSize: 15,
   );
+  static final text400size15MediumGray = text400size15.copyWith(
+    color: AppColors.mediumGray,
+  );
   static final text400size18 = text400.copyWith(
     fontSize: 18,
+  );
+  static final text400size18Dark = text400size18.copyWith(
+    color: AppColors.dark,
   );
   static final text400size18Blue = text400size18.copyWith(
     color: AppColors.blue,

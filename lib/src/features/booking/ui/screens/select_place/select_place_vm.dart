@@ -5,6 +5,7 @@ import 'package:pick_office/src/core/ui/models/entity_state.dart';
 import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/booking/domain/office.dart';
 import 'package:pick_office/src/features/booking/domain/office_place.dart';
+import 'package:pick_office/src/features/booking/services/booking_service.dart';
 import 'package:pick_office/src/features/booking/services/office_service.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_screen.dart';
@@ -18,6 +19,9 @@ class SelectPlaceVm extends ViewModel {
   final BuildContext _context;
   final OfficeService _officeService;
   final int _officeId;
+  final BookingService _bookingService;
+
+  late final _navigator = Navigator.of(_context);
 
   EntityState<Office> office = EntityState.loading();
 
@@ -28,7 +32,8 @@ class SelectPlaceVm extends ViewModel {
   SelectPlaceVm(
     this._context,
     this._officeService,
-    this._officeId, {
+    this._officeId,
+    this._bookingService, {
     required ErrorHandler errorHandler,
   }) : super(errorHandler: errorHandler);
 
@@ -92,7 +97,12 @@ class SelectPlaceVm extends ViewModel {
 
   /// Подтверждение выборп
   Future<void> accept() async {
-    final oneMore = await Navigator.of(_context).push(AcceptBookingDialog());
+    await _bookingService.book(
+      chosenPlace!,
+      office.data!.name,
+    );
+
+    final oneMore = await _navigator.push(AcceptBookingDialog());
 
     if (oneMore ?? false) {
       chosenPlace = null;
@@ -103,13 +113,12 @@ class SelectPlaceVm extends ViewModel {
       structureManager.update(office.data!.places);
       notifyListeners();
     } else {
-
       AppNavigation.router.go('/${HistoryRoute.routeName}');
       pop();
     }
   }
 
   void pop() {
-    Navigator.of(_context).pop();
+    _navigator.pop();
   }
 }

@@ -10,5 +10,6 @@
   "errorText": "Произошла ошибка",
   "oneMoreText": "Забронировать ещё",
   "finishText": "Завершить",
-  "bookingHistoryTitle": "История бронирований"
+  "bookingHistoryTitle": "История бронирований",
+  "placePointText": "Место:"
 }

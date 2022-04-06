@@ -25,6 +25,7 @@ SelectPlaceVm createVm(BuildContext context, int officeId) {
     context,
     Di.i.officeService,
     officeId,
+    Di.i.bookingService,
     errorHandler: ErrorHandler(context),
   );
 }

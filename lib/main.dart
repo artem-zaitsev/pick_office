@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pick_office/src/features/booking/services/storage/booking_storage.dart';
 import 'package:pick_office/src/features/booking/services/storage/data/hive_booking.dart';
 
 import 'src/features/app/app.dart';
@@ -8,6 +9,8 @@ import 'src/features/app/app.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(HiveBookingAdapter());
+
+  await BookingStorage.openBox();
 
   runApp(const App());
 }
