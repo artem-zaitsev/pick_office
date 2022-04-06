@@ -6,12 +6,12 @@ import 'package:pick_office/src/core/ui/state/vm_state.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_route.dart';
 import 'package:pick_office/src/features/main/ui/main_vm.dart';
-import 'package:pick_office/src/features/main/ui/models/tab_type.dart';
+import 'package:pick_office/src/core/domain/tab_type.dart';
 import 'package:pick_office/src/navigation/app_navigation.dart';
 
 class MainScreen extends StatefulWidget {
   final ViewModelBuilder<MainVm> vm;
-  
+
   const MainScreen({
     Key? key,
     required this.vm,

@@ -8,23 +8,39 @@ typedef ViewModelBuilder<VM> = VM Function(BuildContext);
 /// Подписывается и отписывается от ченджнотифайера
 abstract class VmState<T extends StatefulWidget, VM extends ViewModel>
     extends State<T> {
-  late final VM vm;
-
   ViewModelBuilder<VM> get vmBuilder;
+  VM get vm => _vm;
   
+  late VM _vm;
+
   @override
   void initState() {
     super.initState();
-    vm = vmBuilder(context);
+    _vm = vmBuilder(context);
 
-    vm
+    _vm
       ..addListener(_listen)
       ..onInit();
   }
 
   @override
+  void didUpdateWidget(covariant T oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget != widget) {
+      _vm.removeListener(_listen);
+
+      _vm = vmBuilder(context);
+
+      _vm
+        ..addListener(_listen)
+        ..onInit();
+    }
+  }
+
+  @override
   void dispose() {
-    vm
+    _vm
       ..onDispose()
       ..removeListener(_listen);
 

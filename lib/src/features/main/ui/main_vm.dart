@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:pick_office/src/core/domain/tab_type.dart';
 import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
 import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_route.dart';
-import 'package:pick_office/src/features/main/ui/models/tab_type.dart';
 
 /// ВьюМодель главного экрана
 class MainVm extends ViewModel {

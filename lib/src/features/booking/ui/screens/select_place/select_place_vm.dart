@@ -6,7 +6,11 @@ import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/booking/domain/office.dart';
 import 'package:pick_office/src/features/booking/domain/office_place.dart';
 import 'package:pick_office/src/features/booking/services/office_service.dart';
+import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
+import 'package:pick_office/src/features/booking/ui/screens/history/history_screen.dart';
+import 'package:pick_office/src/features/booking/ui/screens/select_place/dialogs/accept_booking_dialog.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/structure_manager/structure_manager.dart';
+import 'package:pick_office/src/navigation/app_navigation.dart';
 
 class SelectPlaceVm extends ViewModel {
   final structureManager = StructureManager();
@@ -52,6 +56,9 @@ class SelectPlaceVm extends ViewModel {
     );
   }
 
+  /// выбор места
+  ///
+  /// Перекрашивает место в свг
   void tapOnPlace(TapDownDetails details) {
     final offset = details.localPosition;
 
@@ -83,7 +90,24 @@ class SelectPlaceVm extends ViewModel {
     notifyListeners();
   }
 
-  void accept() {}
+  /// Подтверждение выборп
+  Future<void> accept() async {
+    final oneMore = await Navigator.of(_context).push(AcceptBookingDialog());
+
+    if (oneMore ?? false) {
+      chosenPlace = null;
+      for (final place in office.data!.places) {
+        place.chosen = false;
+      }
+
+      structureManager.update(office.data!.places);
+      notifyListeners();
+    } else {
+
+      AppNavigation.router.go('/${HistoryRoute.routeName}');
+      pop();
+    }
+  }
 
   void pop() {
     Navigator.of(_context).pop();

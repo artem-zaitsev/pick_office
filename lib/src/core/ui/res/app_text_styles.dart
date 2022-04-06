@@ -20,6 +20,9 @@ abstract class AppTextStyles {
   static final text400size18 = text400.copyWith(
     fontSize: 18,
   );
+  static final text400size18Blue = text400size18.copyWith(
+    color: AppColors.blue,
+  );
 
   static final text700 = _text.copyWith(
     fontWeight: FontWeight.w700,
@@ -27,7 +30,7 @@ abstract class AppTextStyles {
   static final text700size18 = text700.copyWith(
     fontSize: 18,
   );
-  static final text700size18Dark = text700.copyWith(
+  static final text700size18Dark = text700size18.copyWith(
     color: AppColors.dark,
   );
   static final text700size18White = text700size18.copyWith(
