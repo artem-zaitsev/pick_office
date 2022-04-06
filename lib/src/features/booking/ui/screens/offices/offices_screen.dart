@@ -7,7 +7,7 @@ import 'package:pick_office/src/features/booking/domain/office.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_vm.dart';
 
 class OfficesScreen extends StatefulWidget {
-  final OfficesVm vm;
+  final ViewModelBuilder<OfficesVm> vm;
 
   const OfficesScreen({
     Key? key,
@@ -18,53 +18,62 @@ class OfficesScreen extends StatefulWidget {
   State<OfficesScreen> createState() => _OfficesScreenState();
 }
 
-class _OfficesScreenState extends VmState<OfficesScreen, OfficesVm> {
+class _OfficesScreenState extends VmState<OfficesScreen, OfficesVm>
+    with AutomaticKeepAliveClientMixin<OfficesScreen> {
+      
   @override
-  OfficesVm get vm => widget.vm;
+  bool get wantKeepAlive => true;
+
+  @override
+  ViewModelBuilder<OfficesVm> get vmBuilder => widget.vm;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.officeTitle,
         ),
       ),
-      body: Builder(builder: (context) {
-        if (vm.office.loading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-
-        if (vm.office.hasError) {
-          return const Center(
-            child: Text('SomeError'),
-          );
-        }
-
-        if (vm.office.data!.isEmpty) {
-          return const Center(
-            child: Text('Empty'),
-          );
-        }
-
-        final offices = vm.office.data!;
-
-        return ListView.builder(
-          itemCount: vm.office.data?.length,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 30,
-          ),
-          itemBuilder: (ctx, i) {
-            return _Office(
-              office: offices[i],
-              onTap: vm.selectOffice,
+      body: Builder(
+        builder: (context) {
+          if (vm.office.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
-          },
-        );
-      }),
+          }
+
+          if (vm.office.hasError) {
+            return const Center(
+              child: Text('SomeError'),
+            );
+          }
+
+          if (vm.office.data!.isEmpty) {
+            return const Center(
+              child: Text('Empty'),
+            );
+          }
+
+          final offices = vm.office.data!;
+
+          return ListView.builder(
+            itemCount: vm.office.data?.length,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 30,
+            ),
+            itemBuilder: (ctx, i) {
+              return _Office(
+                office: offices[i],
+                onTap: vm.selectOffice,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

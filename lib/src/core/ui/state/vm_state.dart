@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:pick_office/src/core/ui/vm/view_model.dart';
 
+typedef ViewModelBuilder<VM> = VM Function(BuildContext);
+
 /// Базовый стейт всех StatefulWidget  c ViewModel
 ///
 /// Подписывается и отписывается от ченджнотифайера
 abstract class VmState<T extends StatefulWidget, VM extends ViewModel>
     extends State<T> {
-  VM get vm;
+  late final VM vm;
+
+  ViewModelBuilder<VM> get vmBuilder;
+  
   @override
   void initState() {
     super.initState();
+    vm = vmBuilder(context);
+
     vm
-      ..onInit()
-      ..addListener(_listen);
+      ..addListener(_listen)
+      ..onInit();
   }
 
   @override
   void dispose() {
     vm
-      ..removeListener(_listen)
-      ..onDispose();
+      ..onDispose()
+      ..removeListener(_listen);
 
     super.dispose();
   }
 
+  //ignore: no-empty-block
   void _listen() => setState(() {});
 }

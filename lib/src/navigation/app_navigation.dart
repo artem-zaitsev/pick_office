@@ -1,16 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
-import 'package:pick_office/src/features/booking/services/office_service.dart';
-import 'package:pick_office/src/features/booking/services/repository/api/office_api.dart';
-import 'package:pick_office/src/features/booking/services/repository/office_repository.dart';
+import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_route.dart';
-import 'package:pick_office/src/features/booking/ui/screens/offices/offices_vm.dart';
+import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_route.dart';
 import 'package:pick_office/src/features/main/ui/main_route.dart';
-import 'package:pick_office/src/features/main/ui/main_vm.dart';
+import 'package:pick_office/src/features/main/ui/main_screen.dart';
 import 'package:pick_office/src/features/main/ui/models/tab_type.dart';
 
 /// Граф навигации
 abstract class AppNavigation {
+  static final nestedRoutes = <String, Route<dynamic> Function(RouteSettings)>{
+    SelectPlaceRoute.routeName: (rs) => SelectPlaceRoute(
+          officeId: rs.arguments as int,
+        ),
+    OfficesRoute.routeName: (rs) => OfficesRoute(),
+    HistoryRoute.routeName: (rs) => HistoryRoute(),
+  };
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -25,30 +31,10 @@ abstract class AppNavigation {
           );
 
           return MainRoute(
-            vm: MainVm(
-              errorHandler: ErrorHandler(ctx),
-              selectedTab: tab,
-            ),
+            selectedTab: tab,
           );
         },
-        routes: [
-          GoRoute(
-            path: 'offices',
-            pageBuilder: (ctx, state) {
-              return OfficesRoute(
-                vm: OfficesVm(
-                  OfficeService(
-                    OfficeRepository(
-                      OfficeApi(),
-                    ),
-                  ),
-                  errorHandler: ErrorHandler(ctx),
-                ),
-              );
-            },
-          )
-        ],
-      )
+      ),
     ],
   );
 }

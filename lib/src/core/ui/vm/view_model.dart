@@ -10,19 +10,20 @@ abstract class ViewModel extends ChangeNotifier {
 
   /// Колбек на initState
   void onInit() {
-    debugPrint('init $this');
+    debugPrint('init $this, hash: $hashCode, listeners: $hasListeners');
   }
 
   /// Колбек на dispose
   void onDispose() {
-    debugPrint('dispose $this');
+    debugPrint('dispose $this,  hash: $hashCode');
   }
 
   /// Безопасный вызов кода
-  void safe(void Function() call) {
+  void safe(void Function() call, {void Function(Object)? onError}) {
     try {
       call();
     } on Object catch (e) {
+      onError?.call(e);
       handleError(e);
     }
   }
