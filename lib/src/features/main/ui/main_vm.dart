@@ -7,9 +7,14 @@ import 'package:pick_office/src/features/booking/ui/screens/offices/offices_rout
 
 /// ВьюМодель главного экрана
 class MainVm extends ViewModel {
-  late final tabsRoutes = <String, Route<dynamic>>{
+  final tabsRoutes = <String, Route<dynamic>>{
     TabType.history.name: HistoryRoute(),
     TabType.home.name: OfficesRoute(),
+  };
+
+  final tabNavKeys = <TabType, GlobalKey<NavigatorState>>{
+    TabType.home: GlobalKey(),
+    TabType.history: GlobalKey(),
   };
 
   TabType activeTab;
@@ -31,5 +36,12 @@ class MainVm extends ViewModel {
         notifyListeners();
       },
     );
+  }
+
+  /// Обрабатывает нажатие системной кнопки назад, если находимся в табах.
+  Future<bool> willPop() async {
+    final current = tabNavKeys[activeTab];
+
+    return !(await current?.currentState?.maybePop() ?? false);
   }
 }

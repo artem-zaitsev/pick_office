@@ -31,10 +31,13 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
           for (final tab in TabType.values)
             Offstage(
               offstage: tab != vm.activeTab,
-              child: Navigator(
-                key: Key(tab.name),
-                initialRoute: tab.name,
-                onGenerateRoute: _getRoute,
+              child: WillPopScope(
+                onWillPop: vm.willPop,
+                child: Navigator(
+                  key: vm.tabNavKeys[tab],
+                  initialRoute: tab.name,
+                  onGenerateRoute: _getRoute,
+                ),
               ),
             ),
         ],
