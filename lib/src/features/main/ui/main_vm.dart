@@ -4,6 +4,8 @@ import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
 import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_route.dart';
+import 'package:pick_office/src/navigation/app_navigation.dart';
+import 'package:pick_office/src/navigation/app_path.dart';
 
 /// ВьюМодель главного экрана
 class MainVm extends ViewModel {
@@ -30,9 +32,13 @@ class MainVm extends ViewModel {
   void selectTab(int index) {
     safe(
       () {
-        activeTab =
-            TabType.values.firstWhere((element) => element.index == index);
+        // activeTab =
+        //     TabType.values.firstWhere((element) => element.index == index);
 
+        AppNavigation.delegate.setNewRoutePath(
+          index == TabType.home.index ? HomePath() : HistoryPath(),
+        );
+        
         notifyListeners();
       },
     );

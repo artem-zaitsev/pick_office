@@ -14,13 +14,13 @@ class SelectPlaceRoute extends MaterialPageRoute<void> {
   }) : super(
           builder: (context) {
             return SelectPlaceScreen(
-              vm: (context) => createVm(context, officeId),
+              vm: (context) => createSelectPlaceVm(context, officeId),
             );
           },
         );
 }
 
-SelectPlaceVm createVm(BuildContext context, int officeId) {
+SelectPlaceVm createSelectPlaceVm(BuildContext context, int officeId) {
   return SelectPlaceVm(
     context,
     Di.i.officeService,

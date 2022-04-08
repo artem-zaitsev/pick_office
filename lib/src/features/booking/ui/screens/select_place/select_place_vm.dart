@@ -11,6 +11,7 @@ import 'package:pick_office/src/features/booking/ui/screens/history/history_rout
 import 'package:pick_office/src/features/booking/ui/screens/select_place/dialogs/accept_booking_dialog.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/structure_manager/structure_manager.dart';
 import 'package:pick_office/src/navigation/app_navigation.dart';
+import 'package:pick_office/src/navigation/app_path.dart';
 
 ///  Вью-модель для экрана выбора места
 class SelectPlaceVm extends ViewModel {
@@ -117,8 +118,7 @@ class SelectPlaceVm extends ViewModel {
       structureManager.update(office.data!.places);
       notifyListeners();
     } else {
-      AppNavigation.router.go('/${HistoryRoute.routeName}');
-      pop();
+      await AppNavigation.delegate.setNewRoutePath(HistoryPath());
     }
   }
 

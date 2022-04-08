@@ -13,12 +13,12 @@ class MainRoute extends MaterialPage<void> {
     required this.selectedTab,
   }) : super(
           child: MainScreen(
-            vm: (ctx) => createVm(ctx, selectedTab),
+            vm: (ctx) => createMainVm(ctx, selectedTab),
           ),
         );
 }
 
-MainVm createVm(BuildContext context, TabType selectedTab) {
+MainVm createMainVm(BuildContext context, TabType selectedTab) {
   return MainVm(
     errorHandler: ErrorHandler(context),
     selectedTab: selectedTab,

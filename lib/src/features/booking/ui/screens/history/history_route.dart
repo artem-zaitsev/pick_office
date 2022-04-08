@@ -12,13 +12,13 @@ class HistoryRoute extends MaterialPageRoute<void> {
       : super(
           builder: (context) {
             return const HistoryScreen(
-              vm: createVm,
+              vm: createHistoryVm,
             );
           },
         );
 }
 
-HistoryVm createVm(BuildContext context) {
+HistoryVm createHistoryVm(BuildContext context) {
   return HistoryVm(
     Di.i.bookingService,
     errorHandler: ErrorHandler(context),
