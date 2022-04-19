@@ -12,5 +12,7 @@ void main() async {
 
   await BookingStorage.openBox();
 
+  //todo: сделать коммит
+
   runApp(const App());
 }
