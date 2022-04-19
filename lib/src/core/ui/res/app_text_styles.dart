@@ -23,6 +23,8 @@ abstract class AppTextStyles {
   static final text400size18 = text400.copyWith(
     fontSize: 18,
   );
+
+  
   static final text400size18Dark = text400size18.copyWith(
     color: AppColors.dark,
   );
