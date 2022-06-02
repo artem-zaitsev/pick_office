@@ -12,8 +12,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerDelegate: AppNavigation.router.routerDelegate,
-      routeInformationParser: AppNavigation.router.routeInformationParser,
+      routerDelegate: AppNavigation.router.delegate(),
+      routeInformationParser: AppNavigation.router.defaultRouteParser(),
       // Providing a restorationScopeId allows the Navigator built by the
       // MaterialApp to restore the navigation stack when a user leaves and
       // returns to the app after it has been killed while running in the

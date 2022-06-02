@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,15 +6,18 @@ import 'package:pick_office/src/core/ui/res/app_assets.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/res/app_text_styles.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
+import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_vm.dart';
 
 class SelectPlaceScreen extends StatefulWidget {
   final ViewModelBuilder<SelectPlaceVm> vm;
 
-  const SelectPlaceScreen({
+  SelectPlaceScreen({
     Key? key,
-    required this.vm,
-  }) : super(key: key);
+    @PathParam('id') required int officeId,
+    ViewModelBuilder<SelectPlaceVm>? vm,
+  })  : vm = vm ?? ((ctx) => createVm(ctx, officeId)),
+        super(key: key);
 
   @override
   State<SelectPlaceScreen> createState() => _SelectPlaceScreenState();
@@ -48,13 +52,13 @@ class _SelectPlaceScreenState
           }
 
           if (vm.office.hasError) {
-            return  Center(
+            return Center(
               child: Text(AppLocalizations.of(context)!.errorText),
             );
           }
 
           if (vm.office.data == null) {
-            return  Center(
+            return Center(
               child: Text(AppLocalizations.of(context)!.empty),
             );
           }

@@ -1,18 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/res/app_text_styles.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
 import 'package:pick_office/src/features/booking/domain/office.dart';
+import 'package:pick_office/src/features/booking/ui/screens/offices/offices_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_vm.dart';
+import 'package:pick_office/src/navigation/app_router.dart';
 
 class OfficesScreen extends StatefulWidget {
   final ViewModelBuilder<OfficesVm> vm;
 
   const OfficesScreen({
     Key? key,
-    required this.vm,
-  }) : super(key: key);
+    ViewModelBuilder<OfficesVm>? vm,
+  })  : vm = vm ?? createVm,
+        super(key: key);
 
   @override
   State<OfficesScreen> createState() => _OfficesScreenState();
@@ -104,7 +108,10 @@ class _Office extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => onTap(office),
+          onTap: () {
+             AutoTabsRouter.of(context).navigate(SelectPlaceScreenRoute(officeId: 1));
+            onTap(office);
+          },
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: Text(

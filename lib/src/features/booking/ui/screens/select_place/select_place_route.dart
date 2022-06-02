@@ -4,21 +4,21 @@ import 'package:pick_office/src/di/di.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_screen.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_vm.dart';
 
-class SelectPlaceRoute extends MaterialPageRoute<void> {
-  static const routeName = 'select-place/:id';
+// class SelectPlaceRoute extends MaterialPageRoute<void> {
+//   static const routeName = 'select-place/:id';
 
-  final int officeId;
+//   final int officeId;
 
-  SelectPlaceRoute({
-    required this.officeId,
-  }) : super(
-          builder: (context) {
-            return SelectPlaceScreen(
-              vm: (context) => createVm(context, officeId),
-            );
-          },
-        );
-}
+//   SelectPlaceRoute({
+//     required this.officeId,
+//   }) : super(
+//           builder: (context) {
+//             return SelectPlaceScreen(
+//               vm: (context) => createVm(context, officeId),
+//             );
+//           },
+//         );
+// }
 
 SelectPlaceVm createVm(BuildContext context, int officeId) {
   return SelectPlaceVm(

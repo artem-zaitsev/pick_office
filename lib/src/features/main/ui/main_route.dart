@@ -4,23 +4,24 @@ import 'package:pick_office/src/core/ui/handlers/error_handler.dart';
 import 'package:pick_office/src/features/main/ui/main_screen.dart';
 import 'package:pick_office/src/features/main/ui/main_vm.dart';
 
-class MainRoute extends MaterialPage<void> {
-  static const routeName = '/';
+// class MainRoute extends MaterialPage<void> {
+//   static const routeName = '/';
 
-  final TabType selectedTab;
+//   final TabType selectedTab;
 
-  MainRoute({
-    required this.selectedTab,
-  }) : super(
-          child: MainScreen(
-            vm: (ctx) => createVm(ctx, selectedTab),
-          ),
-        );
-}
+//   MainRoute({
+//     required this.selectedTab,
+//   }) : super(
+//           child: MainScreen(
+//             vm: (ctx) => createVm(ctx, selectedTab),
+//           ),
+//         );
+// }
 
-MainVm createVm(BuildContext context, TabType selectedTab) {
+MainVm createVm(BuildContext context, String selectedTab) {
   return MainVm(
     errorHandler: ErrorHandler(context),
-    selectedTab: selectedTab,
+    selectedTab:
+        TabType.values.where((element) => element.name == selectedTab).first,
   );
 }

@@ -117,12 +117,12 @@ class SelectPlaceVm extends ViewModel {
       structureManager.update(office.data!.places);
       notifyListeners();
     } else {
-      AppNavigation.router.go('/${HistoryRoute.routeName}');
+      await AppNavigation.router.pushNamed('/${HistoryRoute.routeName}');
       pop();
     }
   }
 
   void pop() {
-    _navigator.pop();
+    AppNavigation.router.pop();
   }
 }

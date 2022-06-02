@@ -5,6 +5,7 @@ import 'package:pick_office/src/core/ui/res/app_assets.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/res/app_text_styles.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
+import 'package:pick_office/src/features/booking/ui/screens/history/history_route.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_vm.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -12,8 +13,9 @@ class HistoryScreen extends StatefulWidget {
 
   const HistoryScreen({
     Key? key,
-    required this.vm,
-  }) : super(key: key);
+    ViewModelBuilder<HistoryVm>? vm,
+  })  : vm = vm ?? createVm,
+        super(key: key);
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();
