@@ -15,9 +15,9 @@ class MainScreen extends StatefulWidget {
 
   MainScreen({
     Key? key,
-    @PathParam('name') required String selectedTabName,
+    // @PathParam('name') required String selectedTabName,
     ViewModelBuilder<MainVm>? vm,
-  })  : vm = vm ?? ((ctx) => createVm(ctx, selectedTabName)),
+  })  : vm = vm ?? ((ctx) => createVm(ctx, 'selectedTabName')),
         super(key: key);
 
   @override
@@ -32,11 +32,12 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: [
-        OfficesScreenRoute(),
-        HistoryScreenRoute(),
+        OfficeTab(),
+        HistoryTab(),
       ],
       builder: (context, child, _) {
         final tabsRoute = AutoTabsRouter.of(context);
+        vm.tabsRouter = tabsRoute;
 
         return Scaffold(
           body: child,
@@ -48,7 +49,7 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
                   Expanded(
                     child: Column(
                       children: [
-                        if (tab == vm.activeTab)
+                        if (tab.index == tabsRoute.activeIndex)
                           Container(
                             height: 3,
                             decoration: const BoxDecoration(
