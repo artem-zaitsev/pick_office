@@ -109,8 +109,7 @@ class _Office extends StatelessWidget {
         type: MaterialType.transparency,
         child: InkWell(
           onTap: () {
-             AutoTabsRouter.of(context).navigate(SelectPlaceScreenRoute(officeId: 1));
-            // onTap(office);
+            onTap(office);
           },
           child: Padding(
             padding: const EdgeInsets.all(15),
