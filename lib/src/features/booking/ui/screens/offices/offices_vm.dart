@@ -5,8 +5,6 @@ import 'package:pick_office/src/core/ui/models/entity_state.dart';
 import 'package:pick_office/src/core/ui/vm/view_model.dart';
 import 'package:pick_office/src/features/booking/domain/office.dart';
 import 'package:pick_office/src/features/booking/services/office_service.dart';
-import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_route.dart';
-import 'package:pick_office/src/navigation/app_navigation.dart';
 import 'package:pick_office/src/navigation/app_router.dart';
 
 /// Вьюмодель списка офисов
@@ -42,7 +40,5 @@ class OfficesVm extends ViewModel {
 
   void selectOffice(Office office) {
     AutoRouter.of(_context).navigate(SelectPlaceScreenRoute(officeId: 1));
-    // AutoRouter.of(_context).navigateNamed('/bookings/${office.id}');
-    // AppNavigation.router.pushNamed('bookings/${office.id}');
   }
 }

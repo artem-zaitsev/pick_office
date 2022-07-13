@@ -7,17 +7,16 @@ import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
 import 'package:pick_office/src/features/main/ui/main_route.dart';
 import 'package:pick_office/src/features/main/ui/main_vm.dart';
-import 'package:pick_office/src/navigation/app_navigation.dart';
 import 'package:pick_office/src/navigation/app_router.dart';
 
 class MainScreen extends StatefulWidget {
   final ViewModelBuilder<MainVm> vm;
 
-  MainScreen({
+  const MainScreen({
     Key? key,
     // @PathParam('name') required String selectedTabName,
     ViewModelBuilder<MainVm>? vm,
-  })  : vm = vm ?? ((ctx) => createVm(ctx, 'selectedTabName')),
+  })  : vm = vm ?? createVm,
         super(key: key);
 
   @override
@@ -32,8 +31,8 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: [
-        OfficeTab(),
-        HistoryTab(),
+        const OfficeTab(),
+        const HistoryTab(),
       ],
       builder: (context, child, _) {
         final tabsRoute = AutoTabsRouter.of(context);

@@ -5,6 +5,7 @@ analyzer:
     - "build/**"
     - "script/**"
     - "**/*.g.dart"
+    - "**/*.gr.dart"
     - "**/*.freezed.dart"
   language:
     strict-inference: true
@@ -68,6 +69,7 @@ dart_code_metrics:
       unit-type: "hours"
   metrics-exclude:
     - test/**
+    - "**/*.gr.dart"
   rules:
     - always-remove-listener
     - avoid-missing-enum-constant-in-map
