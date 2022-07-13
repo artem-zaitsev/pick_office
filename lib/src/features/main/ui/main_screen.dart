@@ -39,7 +39,27 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
         vm.tabsRouter = tabsRoute;
 
         return Scaffold(
-          body: child,
+          body: Stack(
+            children: [
+              child,
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      context.router.navigateNamed('buttons');
+                    },
+                    child: Text('Buttons'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.router.navigateNamed('play');
+                    },
+                    child: Text('Play'),
+                  ),
+                ],
+              )
+            ],
+          ),
           bottomNavigationBar: SizedBox(
             height: 82,
             child: Row(
@@ -53,7 +73,8 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
                             height: 3,
                             decoration: const BoxDecoration(
                               color: AppColors.dark,
-                              borderRadius: BorderRadius.all(Radius.circular(0.5)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(0.5)),
                             ),
                           ),
                         Expanded(
@@ -80,7 +101,7 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
             ),
           ),
         );
-      }, 
+      },
     );
   }
 }

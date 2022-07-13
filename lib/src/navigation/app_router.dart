@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:pick_office/src/features/animations/ui/button/button_screen.dart';
+import 'package:pick_office/src/features/animations/ui/play/play_screen.dart';
 import 'package:pick_office/src/features/booking/ui/screens/history/history_screen.dart';
 import 'package:pick_office/src/features/booking/ui/screens/offices/offices_screen.dart';
 import 'package:pick_office/src/features/booking/ui/screens/select_place/select_place_screen.dart';
@@ -42,6 +44,14 @@ export 'app_router.gr.dart';
             )
           ]
         ),
+        AutoRoute<void>(
+          path: 'buttons',
+          page: ButtonScreen,
+        ),
+        AutoRoute<void>(
+          path: 'play',
+          page: PlayScreen,
+        )
       ],
     )
   ],
