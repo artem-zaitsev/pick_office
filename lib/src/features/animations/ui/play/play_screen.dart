@@ -31,11 +31,16 @@ class _Play extends StatelessWidget {
           ],
         ),
       ),
+      clipBehavior: Clip.hardEdge,
+      width: 250,
+      height: 250,
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
           onTap: () {},
-          child: Image.asset('assets/images/img_play.png'),
+          child: Center(
+            child: Image.asset('assets/images/img_play.png'),
+          ),
         ),
       ),
     );

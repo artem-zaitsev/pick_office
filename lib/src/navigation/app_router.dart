@@ -42,7 +42,7 @@ export 'app_router.gr.dart';
               path: '',
               page: HistoryScreen,
             )
-          ]
+          ],
         ),
         AutoRoute<void>(
           path: 'buttons',

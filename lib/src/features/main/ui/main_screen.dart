@@ -5,6 +5,8 @@ import 'package:pick_office/src/core/domain/tab_type.dart';
 import 'package:pick_office/src/core/ui/res/app_assets.dart';
 import 'package:pick_office/src/core/ui/res/app_colors.dart';
 import 'package:pick_office/src/core/ui/state/vm_state.dart';
+import 'package:pick_office/src/features/animations/ui/button/button_screen.dart';
+import 'package:pick_office/src/features/animations/ui/play/play_screen.dart';
 import 'package:pick_office/src/features/main/ui/main_route.dart';
 import 'package:pick_office/src/features/main/ui/main_vm.dart';
 import 'package:pick_office/src/navigation/app_router.dart';
@@ -42,21 +44,29 @@ class _MainScreenState extends VmState<MainScreen, MainVm> {
           body: Stack(
             children: [
               child,
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      context.router.navigateNamed('buttons');
-                    },
-                    child: Text('Buttons'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.router.navigateNamed('play');
-                    },
-                    child: Text('Play'),
-                  ),
-                ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                           Navigator.of(context).push(MaterialPageRoute<void>(builder: (ctx) => ButtonScreen()));
+                        },
+                        child: Text('Buttons'),
+                      ),
+                    ),
+                    Spacer(),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                           Navigator.of(context).push(MaterialPageRoute<void>(builder: (ctx) => PlayScreen()));
+                        },
+                        child: Text('Play'),
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           ),
