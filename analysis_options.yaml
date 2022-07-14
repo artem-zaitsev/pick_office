@@ -10,8 +10,8 @@ analyzer:
   language:
     strict-inference: true
     strict-raw-types: true
-  plugins:
-    - dart_code_metrics
+  # plugins:
+  #   - dart_code_metrics
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
@@ -48,178 +48,178 @@ analyzer:
     use_key_in_widget_constructors: error
     valid_regexps: error
 
-dart_code_metrics:
-  anti-patterns:
-    - long-method
-    - long-parameter-list
-  metrics:
-    cyclomatic-complexity: 20
-    maintainability-index: 50
-    maximum-nesting: 5
-    number-of-parameters: 5
-    source-lines-of-code: 50
-    technical-debt:
-      threshold: 1
-      todo-cost: 4
-      ignore-cost: 8
-      ignore-for-file-cost: 16
-      as-dynamic-cost: 16
-      deprecated-annotations-cost: 2
-      file-nullsafety-migration-cost: 2
-      unit-type: "hours"
-  metrics-exclude:
-    - test/**
-    - "**/*.gr.dart"
-  rules:
-    - always-remove-listener
-    - avoid-missing-enum-constant-in-map
-    - avoid-nested-conditional-expressions:
-        acceptable-level: 2
-    - avoid-returning-widgets
-    - avoid-throw-in-catch-block
-    - avoid-unnecessary-setstate
-    - avoid-unnecessary-type-assertions
-    - avoid-unnecessary-type-casts
-    - avoid-unused-parameters
-    - binary-expression-operand-order
-    - double-literal-format
-    - newline-before-return
-    - no-boolean-literal-compare
-    - no-empty-block
-    - no-equal-then-else
-    - prefer-conditional-expressions
-    - prefer-const-border-radius
-    - prefer-correct-identifier-length:
-        exclude:
-          - test/**
-        exceptions:
-          - id
-          - vm
-    - prefer-correct-type-name
-    - prefer-extracting-callbacks
-    - prefer-first
-    - prefer-intl-name
-    - prefer-last
-    - prefer-match-file-name:
-        exclude:
-          - lib/src/core/services/network/firebase_options.dart
-          - test/**
-    - provide-correct-intl-args
-    - member-ordering-extended:
-        exclude:
-          - lib/src/core/services/network/firebase_options.dart
-        order:
-          - public-static-const-fields
-          - private-static-const-fields
-          - public-static-final-fields
-          - private-static-final-fields
-          - public-static-fields
-          - private-static-fields
-          - public-final-fields
-          - private-final-fields
-          - public-fields
-          - public-getters-setters
-          - private-fields
-          - private-getters-setters
-          - constructors
-          - named-constructors
-          - factory-constructors
-          - overridden-methods
-          - public-static-methods
-          - public-methods
-          - protected-methods
-          - private-static-methods
-          - private-methods
+# dart_code_metrics:
+#   anti-patterns:
+#     - long-method
+#     - long-parameter-list
+#   metrics:
+#     cyclomatic-complexity: 20
+#     maintainability-index: 50
+#     maximum-nesting: 5
+#     number-of-parameters: 5
+#     source-lines-of-code: 50
+#     technical-debt:
+#       threshold: 1
+#       todo-cost: 4
+#       ignore-cost: 8
+#       ignore-for-file-cost: 16
+#       as-dynamic-cost: 16
+#       deprecated-annotations-cost: 2
+#       file-nullsafety-migration-cost: 2
+#       unit-type: "hours"
+#   metrics-exclude:
+#     - test/**
+#     - "**/*.gr.dart"
+#   rules:
+#     - always-remove-listener
+#     - avoid-missing-enum-constant-in-map
+#     - avoid-nested-conditional-expressions:
+#         acceptable-level: 2
+#     - avoid-returning-widgets
+#     - avoid-throw-in-catch-block
+#     - avoid-unnecessary-setstate
+#     - avoid-unnecessary-type-assertions
+#     - avoid-unnecessary-type-casts
+#     - avoid-unused-parameters
+#     - binary-expression-operand-order
+#     - double-literal-format
+#     - newline-before-return
+#     - no-boolean-literal-compare
+#     - no-empty-block
+#     - no-equal-then-else
+#     - prefer-conditional-expressions
+#     - prefer-const-border-radius
+#     - prefer-correct-identifier-length:
+#         exclude:
+#           - test/**
+#         exceptions:
+#           - id
+#           - vm
+#     - prefer-correct-type-name
+#     - prefer-extracting-callbacks
+#     - prefer-first
+#     - prefer-intl-name
+#     - prefer-last
+#     - prefer-match-file-name:
+#         exclude:
+#           - lib/src/core/services/network/firebase_options.dart
+#           - test/**
+#     - provide-correct-intl-args
+#     - member-ordering-extended:
+#         exclude:
+#           - lib/src/core/services/network/firebase_options.dart
+#         order:
+#           - public-static-const-fields
+#           - private-static-const-fields
+#           - public-static-final-fields
+#           - private-static-final-fields
+#           - public-static-fields
+#           - private-static-fields
+#           - public-final-fields
+#           - private-final-fields
+#           - public-fields
+#           - public-getters-setters
+#           - private-fields
+#           - private-getters-setters
+#           - constructors
+#           - named-constructors
+#           - factory-constructors
+#           - overridden-methods
+#           - public-static-methods
+#           - public-methods
+#           - protected-methods
+#           - private-static-methods
+#           - private-methods
 
-linter:
-  rules:
-    # Error rules.
-    always_use_package_imports: false
-    avoid_dynamic_calls: true
-    avoid_returning_null_for_future: true
-    avoid_slow_async_io: true
-    avoid_type_to_string: true
-    cancel_subscriptions: true
-    close_sinks: true
-    invariant_booleans: true
-    literal_only_boolean_expressions: true
-    no_adjacent_strings_in_list: true
-    test_types_in_equals: true
-    throw_in_finally: true
-    unnecessary_statements: true
-    unrelated_type_equality_checks: true
-    unsafe_html: true
-    use_build_context_synchronously: true
+# linter:
+#   rules:
+#     # Error rules.
+#     always_use_package_imports: false
+#     avoid_dynamic_calls: true
+#     avoid_returning_null_for_future: true
+#     avoid_slow_async_io: true
+#     avoid_type_to_string: true
+#     cancel_subscriptions: true
+#     close_sinks: true
+#     invariant_booleans: true
+#     literal_only_boolean_expressions: true
+#     no_adjacent_strings_in_list: true
+#     test_types_in_equals: true
+#     throw_in_finally: true
+#     unnecessary_statements: true
+#     unrelated_type_equality_checks: true
+#     unsafe_html: true
+#     use_build_context_synchronously: true
 
-    # Style rules.
-    always_declare_return_types: true
-    always_put_required_named_parameters_first: false
-    avoid_annotating_with_dynamic: true
-    avoid_bool_literals_in_conditional_expressions: true
-    avoid_catches_without_on_clauses: true
-    avoid_catching_errors: true
-    avoid_equals_and_hash_code_on_mutable_classes: true
-    avoid_escaping_inner_quotes: true
-    avoid_field_initializers_in_const_classes: true
-    avoid_implementing_value_types: true
-    avoid_js_rounded_ints: true
-    avoid_multiple_declarations_per_line: true
-    avoid_private_typedef_functions: true
-    avoid_redundant_argument_values: true
-    avoid_returning_null: true
-    avoid_returning_this: true
-    avoid_setters_without_getters: true
-    avoid_types_on_closure_parameters: true
-    avoid_unused_constructor_parameters: true
-    avoid_void_async: true
-    cascade_invocations: true
-    deprecated_consistency: true
-    directives_ordering: true
-    do_not_use_environment: true
-    eol_at_end_of_file: true
-    flutter_style_todos: true
-    leading_newlines_in_multiline_strings: true
-    lines_longer_than_80_chars: false
-    missing_whitespace_between_adjacent_strings: true
-    no_runtimeType_toString: true
-    noop_primitive_operations: true
-    null_closures: true
-    omit_local_variable_types: true
-    only_throw_errors: true
-    package_api_docs: true
-    parameter_assignments: true
-    prefer_asserts_in_initializer_lists: true
-    prefer_constructors_over_static_methods: true
-    prefer_final_in_for_each: true
-    prefer_final_locals: true
-    prefer_if_elements_to_conditional_expressions: true
-    prefer_interpolation_to_compose_strings: true
-    prefer_mixin: false
-    prefer_single_quotes: true
-    public_member_api_docs: false
-    require_trailing_commas: true
-    sort_child_properties_last: false
-    sort_constructors_first: false
-    sort_unnamed_constructors_first: false
-    type_annotate_public_apis: true
-    unawaited_futures: true
-    unnecessary_await_in_return: true
-    unnecessary_constructor_name: true
-    unnecessary_lambdas: true
-    unnecessary_null_aware_assignments: true
-    unnecessary_null_checks: true
-    unnecessary_nullable_for_final_variable_declarations: true
-    unnecessary_parenthesis: true
-    unnecessary_raw_strings: true
-    use_if_null_to_convert_nulls_to_bools: true
-    use_is_even_rather_than_modulo: true
-    use_late_for_private_fields_and_variables: true
-    use_named_constants: true
-    use_raw_strings: true
-    use_setters_to_change_properties: true
-    use_string_buffers: true
-    use_test_throws_matchers: true
-    use_to_and_as_if_applicable: true
+#     # Style rules.
+#     always_declare_return_types: true
+#     always_put_required_named_parameters_first: false
+#     avoid_annotating_with_dynamic: true
+#     avoid_bool_literals_in_conditional_expressions: true
+#     avoid_catches_without_on_clauses: true
+#     avoid_catching_errors: true
+#     avoid_equals_and_hash_code_on_mutable_classes: true
+#     avoid_escaping_inner_quotes: true
+#     avoid_field_initializers_in_const_classes: true
+#     avoid_implementing_value_types: true
+#     avoid_js_rounded_ints: true
+#     avoid_multiple_declarations_per_line: true
+#     avoid_private_typedef_functions: true
+#     avoid_redundant_argument_values: true
+#     avoid_returning_null: true
+#     avoid_returning_this: true
+#     avoid_setters_without_getters: true
+#     avoid_types_on_closure_parameters: true
+#     avoid_unused_constructor_parameters: true
+#     avoid_void_async: true
+#     cascade_invocations: true
+#     deprecated_consistency: true
+#     directives_ordering: true
+#     do_not_use_environment: true
+#     eol_at_end_of_file: true
+#     flutter_style_todos: true
+#     leading_newlines_in_multiline_strings: true
+#     lines_longer_than_80_chars: false
+#     missing_whitespace_between_adjacent_strings: true
+#     no_runtimeType_toString: true
+#     noop_primitive_operations: true
+#     null_closures: true
+#     omit_local_variable_types: true
+#     only_throw_errors: true
+#     package_api_docs: true
+#     parameter_assignments: true
+#     prefer_asserts_in_initializer_lists: true
+#     prefer_constructors_over_static_methods: true
+#     prefer_final_in_for_each: true
+#     prefer_final_locals: true
+#     prefer_if_elements_to_conditional_expressions: true
+#     prefer_interpolation_to_compose_strings: true
+#     prefer_mixin: false
+#     prefer_single_quotes: true
+#     public_member_api_docs: false
+#     require_trailing_commas: true
+#     sort_child_properties_last: false
+#     sort_constructors_first: false
+#     sort_unnamed_constructors_first: false
+#     type_annotate_public_apis: true
+#     unawaited_futures: true
+#     unnecessary_await_in_return: true
+#     unnecessary_constructor_name: true
+#     unnecessary_lambdas: true
+#     unnecessary_null_aware_assignments: true
+#     unnecessary_null_checks: true
+#     unnecessary_nullable_for_final_variable_declarations: true
+#     unnecessary_parenthesis: true
+#     unnecessary_raw_strings: true
+#     use_if_null_to_convert_nulls_to_bools: true
+#     use_is_even_rather_than_modulo: true
+#     use_late_for_private_fields_and_variables: true
+#     use_named_constants: true
+#     use_raw_strings: true
+#     use_setters_to_change_properties: true
+#     use_string_buffers: true
+#     use_test_throws_matchers: true
+#     use_to_and_as_if_applicable: true
 
-    # Pub rules.
-    sort_pub_dependencies: true
+#     # Pub rules.
+#     sort_pub_dependencies: true
